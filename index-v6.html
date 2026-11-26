@@ -1,0 +1,2444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdelrahman Matouk | Data Analyst & Aspiring ML Engineer</title>
+  
+  <!-- SEO & Social Meta -->
+  <meta name="description" content="Portfolio of Abdelrahman Matouk — Data Analyst and Aspiring Machine Learning Engineer. Turning complex datasets into actionable business decisions.">
+  <meta name="author" content="Abdelrahman Matouk">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       CSS VARIABLES & THEME SETUP
+       ========================================================================== */
+    :root {
+      --bg-black: #080708;
+      --bg-card: rgba(14, 11, 14, 0.72);
+      --bg-card-hover: rgba(26, 18, 24, 0.85);
+      --primary-red: #d31221;
+      --accent-crimson: #9e0c18;
+      --dark-wine: #3d050a;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(211, 18, 33, 0.4);
+      --text-white: #f5f5f7;
+      --text-gray: #a1a1aa;
+      --text-muted: #71717a;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --container-max: 1560px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-black);
+      color: var(--text-white);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    body {
+      background-color: var(--bg-black);
+      color: var(--text-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+      width: 100%;
+      position: relative;
+    }
+
+    /* ==========================================================================
+       GLOBAL FIXED ANIMATED CANVAS BACKGROUND
+       Spans 100% of the entire page scroll (from Hero to Footer)
+       ========================================================================== */
+    #global-canvas-wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    #global-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Subtle global atmospheric tint to maintain pristine text contrast */
+    .global-canvas-tint {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(8, 7, 8, 0.4) 0%, rgba(8, 7, 8, 0.75) 100%);
+      pointer-events: none;
+    }
+
+    /* Main Content Layer - Positioned cleanly above the persistent canvas */
+    .site-content-wrapper {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+    }
+
+    /* Container Utility */
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 clamp(1.2rem, 3vw, 3.5rem);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ==========================================================================
+       GLOBAL NAVBAR
+       ========================================================================== */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 1.4rem 0;
+      background: rgba(8, 7, 8, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: padding 0.3s ease, background 0.3s ease;
+    }
+
+    .site-nav.scrolled {
+      padding: 1rem 0;
+      background: rgba(8, 7, 8, 0.95);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .brand-badge {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--primary-red), var(--dark-wine));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(211, 18, 33, 0.4);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      color: #fff;
+    }
+
+    .brand-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--primary-red);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-gray);
+      transition: color 0.25s ease;
+      position: relative;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: #fff;
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--primary-red);
+      box-shadow: 0 0 8px var(--primary-red);
+    }
+
+    .nav-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(211, 18, 33, 0.18);
+      border: 1px solid var(--primary-red);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.2rem;
+      border-radius: 999px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-cta-btn:hover {
+      background: var(--primary-red);
+      box-shadow: 0 0 20px rgba(211, 18, 33, 0.5);
+      transform: translateY(-2px);
+    }
+
+    /* Mobile Toggle */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       HERO SECTION (Naturally Positioned Over Global Canvas)
+       ========================================================================== */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: clamp(7rem, 12vh, 9rem) 0 5rem;
+      position: relative;
+    }
+
+    .hero-content {
+      width: 100%;
+    }
+
+    .hero-top-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(8, 7, 8, 0.75);
+      border: 1px solid var(--border-subtle);
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #e4e4e7;
+      margin-bottom: 1.2rem;
+      backdrop-filter: blur(8px);
+      width: fit-content;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #22c55e;
+    }
+
+    .hero-bg-watermark {
+      font-family: var(--font-display);
+      font-size: clamp(5.5rem, 16vw, 17rem);
+      line-height: 0.8;
+      letter-spacing: 0.03em;
+      color: var(--primary-red);
+      opacity: 0.92;
+      user-select: none;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 45px rgba(211, 18, 33, 0.45);
+      text-transform: uppercase;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-text-col {
+      max-width: 680px;
+    }
+
+    .hero-headline {
+      font-size: clamp(1.8rem, 3.4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.01em;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 2px 6px rgba(0, 0, 0, 0.85);
+    }
+
+    .hero-headline .text-gradient {
+      background: linear-gradient(90deg, #fff 0%, var(--primary-red) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #f4f4f5;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--primary-red);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.8rem;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(211, 18, 33, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: #b90e1b;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(211, 18, 33, 0.5);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(8, 7, 8, 0.75);
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.8rem;
+      border-radius: 6px;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .hero-socials {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #e4e4e7;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+      transition: color 0.25s ease;
+    }
+
+    .social-link:hover {
+      color: var(--primary-red);
+    }
+
+    .social-link svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* Portrait & Metrics Showcase */
+    .hero-profile-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2rem;
+    }
+
+    .profile-card {
+      position: relative;
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+      max-width: 420px;
+    }
+
+    .profile-img-wrap {
+      width: 90px;
+      height: 90px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid var(--primary-red);
+      flex-shrink: 0;
+      box-shadow: 0 0 15px rgba(211, 18, 33, 0.4);
+    }
+
+    .profile-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .profile-info h4 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.2rem;
+    }
+
+    .profile-info p {
+      font-size: 0.76rem;
+      color: var(--primary-red);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .profile-info span {
+      font-size: 0.72rem;
+      color: var(--text-gray);
+      line-height: 1.4;
+      display: block;
+    }
+
+    /* ==========================================================================
+       SECTION WRAPPERS (Clean Translucent Design to Reveal Global Animation)
+       ========================================================================== */
+    .section-wrap {
+      padding: clamp(5.5rem, 9vw, 8.5rem) 0;
+      position: relative;
+      background: transparent;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .section-header-block {
+      margin-bottom: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--primary-red);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--primary-red);
+    }
+
+    .section-main-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5vw, 4.4rem);
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+      color: #fff;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    }
+
+    .section-desc {
+      font-size: 0.98rem;
+      color: #d4d4d8;
+      max-width: 650px;
+      line-height: 1.6;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    /* ==========================================================================
+       ABOUT ME & PILLARS SECTION
+       ========================================================================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .about-story {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: clamp(2rem, 3.5vw, 3rem);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .about-lead {
+      font-size: 1.2rem;
+      font-weight: 600;
+      line-height: 1.65;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid var(--primary-red);
+      padding-left: 1.2rem;
+    }
+
+    .about-body p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #d1d1d6;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .pillars-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .pillar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1.4rem 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .pillar-card:hover {
+      border-color: var(--border-glow);
+      transform: translateX(6px);
+      background: var(--bg-card-hover);
+    }
+
+    .pillar-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--primary-red);
+      line-height: 1;
+      width: 35px;
+    }
+
+    .pillar-content h4 {
+      font-size: 0.92rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 0.2rem;
+    }
+
+    .pillar-content p {
+      font-size: 0.8rem;
+      color: var(--text-gray);
+      line-height: 1.4;
+    }
+
+    /* ==========================================================================
+       ANALYTICAL WORKFLOW SECTION (8 STEPS)
+       ========================================================================== */
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .workflow-step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1.8rem 1.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+      backdrop-filter: blur(10px);
+    }
+
+    .workflow-step-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(211, 18, 33, 0.15);
+    }
+
+    .step-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .step-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary-red);
+      background: rgba(211, 18, 33, 0.15);
+      border: 1px solid rgba(211, 18, 33, 0.3);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .step-icon {
+      font-size: 1.4rem;
+    }
+
+    .step-title {
+      font-size: 0.98rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: #fff;
+      margin-bottom: 0.6rem;
+      line-height: 1.35;
+    }
+
+    .step-desc {
+      font-size: 0.78rem;
+      color: var(--text-gray);
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       TECHNICAL SKILLS SECTION
+       ========================================================================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.8rem;
+    }
+
+    .skill-category-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 2.2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .skill-category-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-5px);
+      background: var(--bg-card-hover);
+    }
+
+    .skill-category-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-red), transparent);
+    }
+
+    .skill-cat-title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: 0.06em;
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+
+    .skill-cat-sub {
+      font-size: 0.72rem;
+      color: var(--primary-red);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-tag {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      padding: 0.45rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #d4d4d8;
+      transition: all 0.25s ease;
+    }
+
+    .skill-tag:hover {
+      background: rgba(211, 18, 33, 0.22);
+      border-color: var(--primary-red);
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       FEATURED PROJECTS SECTION
+       ========================================================================== */
+    .projects-container {
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+
+    /* Flagship Project Card (Brain Rot Analytics) */
+    .flagship-project {
+      background: linear-gradient(135deg, rgba(28, 12, 17, 0.88) 0%, rgba(14, 10, 13, 0.92) 100%);
+      border: 1px solid rgba(211, 18, 33, 0.4);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(211, 18, 33, 0.2);
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      backdrop-filter: blur(12px);
+    }
+
+    .flagship-visual {
+      position: relative;
+      background: #000;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .flagship-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .flagship-project:hover .flagship-visual img {
+      transform: scale(1.02);
+    }
+
+    .flagship-content {
+      padding: clamp(2rem, 4vw, 3.5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-header-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--primary-red);
+      line-height: 1;
+    }
+
+    .project-badge {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 4px;
+      background: rgba(211, 18, 33, 0.2);
+      border: 1px solid var(--primary-red);
+      color: #fff;
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .project-desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #d1d1d6;
+      margin-bottom: 1.8rem;
+    }
+
+    .project-meta-box {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 1.2rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .meta-row {
+      margin-bottom: 0.8rem;
+    }
+
+    .meta-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .meta-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--primary-red);
+      margin-bottom: 0.2rem;
+    }
+
+    .meta-val {
+      font-size: 0.85rem;
+      color: #e4e4e7;
+      line-height: 1.4;
+    }
+
+    .project-tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .tech-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      color: #d4d4d8;
+    }
+
+    .project-links {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    /* Standard Project Grid for other 4 projects */
+    .standard-projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .standard-project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.35s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .standard-project-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      background: var(--bg-card-hover);
+    }
+
+    .card-thumb-wrap {
+      width: 100%;
+      height: 240px;
+      background: #141113;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .standard-project-card:hover .card-thumb-wrap img {
+      transform: scale(1.04);
+    }
+
+    .card-content-wrap {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .standard-project-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 0.04em;
+      color: #fff;
+      margin-bottom: 0.6rem;
+    }
+
+    .standard-project-desc {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: #a1a1aa;
+      margin-bottom: 1.4rem;
+    }
+
+    /* ==========================================================================
+       EDUCATION & CERTIFICATIONS TIMELINE
+       ========================================================================== */
+    .edu-cert-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .timeline-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+      border-left: 2px solid rgba(211, 18, 33, 0.3);
+    }
+
+    .timeline-item {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1.6rem 1.8rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .timeline-item:hover {
+      border-color: var(--border-glow);
+      transform: translateX(4px);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      top: 1.8rem;
+      left: -2.05rem;
+      width: 14px;
+      height: 14px;
+      background: var(--primary-red);
+      border: 3px solid var(--bg-black);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--primary-red);
+    }
+
+    .timeline-period {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--primary-red);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-org {
+      font-size: 0.85rem;
+      color: #d1d1d6;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-note {
+      font-size: 0.78rem;
+      color: var(--text-gray);
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       CERTIFICATES GALLERY & LIGHTBOX
+       ========================================================================== */
+    .edu-cert-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .cert-gallery-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .cert-gallery-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.8rem;
+    }
+
+    .cert-gallery-title {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .cert-gallery-hint {
+      font-size: 0.72rem;
+      color: var(--primary-red);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cert-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.3rem;
+    }
+
+    .cert-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: all 0.35s ease;
+      position: relative;
+      backdrop-filter: blur(10px);
+    }
+
+    .cert-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(211, 18, 33, 0.2);
+      background: var(--bg-card-hover);
+    }
+
+    .cert-thumb-container {
+      width: 100%;
+      height: 165px;
+      background: #000;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .cert-thumb-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .cert-card:hover .cert-thumb-container img {
+      transform: scale(1.04);
+    }
+
+    .cert-zoom-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(8, 7, 8, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      gap: 0.4rem;
+      text-transform: uppercase;
+    }
+
+    .cert-card:hover .cert-zoom-overlay {
+      opacity: 1;
+    }
+
+    .cert-details {
+      padding: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .cert-tag {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--primary-red);
+      margin-bottom: 0.25rem;
+    }
+
+    .cert-name {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 0.3rem;
+    }
+
+    .cert-issuer {
+      font-size: 0.73rem;
+      color: #a1a1aa;
+      line-height: 1.35;
+    }
+
+    .cert-date {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: #d4d4d8;
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Certificate Lightbox Modal */
+    .cert-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .cert-lightbox.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+    }
+
+    .lightbox-dialog {
+      position: relative;
+      z-index: 10;
+      max-width: 92vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(14, 11, 14, 0.95);
+      border: 1px solid rgba(211, 18, 33, 0.4);
+      border-radius: 12px;
+      padding: 1.2rem;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(211, 18, 33, 0.3);
+    }
+
+    .lightbox-dialog img {
+      max-width: 100%;
+      max-height: 76vh;
+      object-fit: contain;
+      border-radius: 6px;
+      display: block;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary-red);
+      color: #fff;
+      border: 2px solid #fff;
+      font-size: 1.4rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .lightbox-close:hover {
+      transform: scale(1.1);
+      background: #b90e1b;
+    }
+
+    .lightbox-caption {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #e4e4e7;
+      text-align: center;
+    }
+
+    /* ==========================================================================
+       CONTACT & FOOTER SECTION
+       ========================================================================== */
+    .contact-section-wrap {
+      background: transparent;
+      padding: clamp(6rem, 10vw, 9rem) 0 4rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 5rem;
+    }
+
+    .contact-headline {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 25px rgba(0, 0, 0, 0.9);
+    }
+
+    .contact-headline span {
+      color: var(--primary-red);
+    }
+
+    .contact-subtext {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #d1d1d8;
+      max-width: 520px;
+      margin-bottom: 2.2rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    .contact-items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .contact-link-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1.2rem 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-link-card:hover {
+      border-color: var(--primary-red);
+      transform: translateX(6px);
+      background: var(--bg-card-hover);
+    }
+
+    .contact-card-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(211, 18, 33, 0.15);
+      border: 1px solid rgba(211, 18, 33, 0.4);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-red);
+      flex-shrink: 0;
+    }
+
+    .contact-card-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    .contact-card-info h5 {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--primary-red);
+      margin-bottom: 0.15rem;
+    }
+
+    .contact-card-info p {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    /* Footer Credits */
+    .site-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-right {
+      text-align: right;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 1200px) {
+      .workflow-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .flagship-project {
+        grid-template-columns: 1fr;
+      }
+      .flagship-visual {
+        height: 380px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .hero-profile-col {
+        align-items: flex-start;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .standard-projects-grid {
+        grid-template-columns: 1fr;
+      }
+      .edu-cert-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+      .site-footer {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+      }
+      .footer-right {
+        text-align: center;
+      }
+      .nav-menu {
+        display: none;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .site-nav.open .nav-menu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(8, 7, 8, 0.98);
+        padding: 2rem;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .cert-gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .cert-thumb-container {
+        height: 200px;
+      }
+    }
+
+    /* Accessibility: Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       GLOBAL PERSISTENT ANIMATED CANVAS
+       Renders seamlessly behind 100% of the entire page
+       ========================================================================== -->
+  <div id="global-canvas-wrap">
+    <canvas id="global-canvas"></canvas>
+    <div class="global-canvas-tint"></div>
+  </div>
+
+  <!-- ==========================================================================
+       SITE CONTENT WRAPPER (Sits above the global canvas)
+       ========================================================================== -->
+  <div class="site-content-wrapper">
+
+    <!-- GLOBAL NAVIGATION -->
+    <nav class="site-nav" id="main-nav">
+      <div class="container nav-inner">
+        <a href="#hero" class="brand-link">
+          <div class="brand-badge">AM</div>
+          <div class="brand-text">
+            <span class="brand-name">ABDELRAHMAN MATOUK</span>
+            <span class="brand-title">Data Analyst &bull; ML Engineer</span>
+          </div>
+        </a>
+
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation">&#9776;</button>
+
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#workflow" class="nav-link">Workflow</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li>
+            <a href="assets/Abdelrahman_Matouk_Data_Analyst_BI_ATS_CV.pdf" download="Abdelrahman_Matouk_Data_Analyst_BI_ATS_CV.pdf" class="nav-cta-btn">
+              Download CV &darr;
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- 1. HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-content">
+        <div class="hero-top-tag">
+          <span class="status-dot"></span>
+          <span>Data Analyst | Aspiring Machine Learning Engineer</span>
+        </div>
+
+        <div class="hero-bg-watermark">ABDELRAHMAN MATOUK</div>
+
+        <div class="hero-grid">
+          <div class="hero-text-col">
+            <h1 class="hero-headline">
+              Turning Data Into <span class="text-gradient">Meaningful Decisions.</span>
+            </h1>
+            <p class="hero-description">
+              I transform complex datasets into meaningful insights through data analysis, advanced visualization, and machine learning. Based in Egypt, ready for high-impact analytical challenges.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#projects" class="btn-primary">
+                <span>Explore My Work</span>
+                <span>&rarr;</span>
+              </a>
+              <a href="assets/Abdelrahman_Matouk_Data_Analyst_BI_ATS_CV.pdf" download="Abdelrahman_Matouk_Data_Analyst_BI_ATS_CV.pdf" class="btn-secondary">
+                <span>Download CV</span>
+                <span>&darr;</span>
+              </a>
+            </div>
+
+            <div class="hero-socials">
+              <a href="https://linkedin.com/in/abdelrahman-ayman-matouk-40ba94352" target="_blank" rel="noopener noreferrer" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.45 1.45 0 0 0 1.45-1.45 1.45 1.45 0 0 0-1.45-1.45 1.45 1.45 0 0 0-1.45 1.45c0 .8.65 1.45 1.45 1.45m1.39 9.74v-8.37H5.07v8.37h2.78z"/></svg>
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://github.com/abdelrahman-matouk" target="_blank" rel="noopener noreferrer" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                <span>GitHub</span>
+              </a>
+              <a href="mailto:engabood999@gmail.com" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <span>Email</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Verified Portrait Profile Card -->
+          <div class="hero-profile-col">
+            <div class="profile-card">
+              <div class="profile-img-wrap">
+                <img src="assets/portrait.png" alt="Abdelrahman Matouk" loading="eager">
+              </div>
+              <div class="profile-info">
+                <h4>Abdelrahman Matouk</h4>
+                <p>Third-Year IS Student</p>
+                <span>Faculty of Computers &amp; Information, Minya University (Grad 2028)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ABOUT ME SECTION -->
+    <section id="about" class="section-wrap">
+      <div class="container">
+        <div class="section-header-block">
+          <div class="section-eyebrow">Professional Identity</div>
+          <h2 class="section-main-title">ABOUT ME</h2>
+          <p class="section-desc">Bridging analytical rigor, statistical modeling, and real business decision-making.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-story">
+            <div class="about-lead">
+              "I believe that effective data analysis is not just about creating dashboards or writing queries. It is about understanding the business question and communicating the right insights to support better decisions."
+            </div>
+            <div class="about-body">
+              <p>
+                I am a third-year Information Systems student at Minya University, passionate about Data Analytics and Machine Learning. My interest lies in understanding business problems, exploring data, discovering patterns, and transforming findings into actionable insights.
+              </p>
+              <p>
+                From architecting SQL Server relational schemas and star schema data models to developing executive Power BI dashboards and training machine learning classification models, I focus on solving real-world challenges with measurable value.
+              </p>
+            </div>
+          </div>
+
+          <!-- 5 Core Professional Pillars -->
+          <div class="pillars-col">
+            <div class="pillar-card">
+              <div class="pillar-num">01</div>
+              <div class="pillar-content">
+                <h4>Analytical Thinking</h4>
+                <p>Deconstructing ambiguous business problems into structured, quantifiable hypotheses.</p>
+              </div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-num">02</div>
+              <div class="pillar-content">
+                <h4>Business Understanding</h4>
+                <p>Aligning data models and metrics directly with executive stakeholder objectives.</p>
+              </div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-num">03</div>
+              <div class="pillar-content">
+                <h4>Problem Solving</h4>
+                <p>Handling dirty data, complex ETL anomalies, and feature engineering bottlenecks.</p>
+              </div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-num">04</div>
+              <div class="pillar-content">
+                <h4>Data Storytelling</h4>
+                <p>Transforming statistical results into persuasive, visually clear executive narratives.</p>
+              </div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-num">05</div>
+              <div class="pillar-content">
+                <h4>Continuous Learning</h4>
+                <p>Actively mastering modern ML algorithms, advanced DAX, and scalable data pipelines.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ANALYTICAL WORKFLOW SECTION (8 STEPS) -->
+    <section id="workflow" class="section-wrap">
+      <div class="container">
+        <div class="section-header-block">
+          <div class="section-eyebrow">Methodology</div>
+          <h2 class="section-main-title">ANALYTICAL WORKFLOW</h2>
+          <p class="section-desc">A disciplined, end-to-end framework ensuring high data integrity and actionable outcomes.</p>
+        </div>
+
+        <div class="workflow-grid">
+          <!-- Step 1 -->
+          <div class="workflow-step-card">
+            <div class="step-header">
+              <span class="step-badge">STEP 01</span>
+              <span class="step-icon">🎯</span>
+            </div>
+            <div>
+              <h3 class="step-title">Understand Business Question</h3>
+              <p class="step-desc">Define objectives, identify key business KPIs, and align project goals with stakeholder expectations.</p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="workflow-step-card">
+            <div class="step-header">
+              <span class="step-badge">STEP 02</span>
+              <span class="step-icon">📥</span>
+            </div>
+            <div>
+              <h3 class="step-title">Collect The Data</h3>
+              <p class="step-desc">Gather transactional logs, surveys, and multi-source operational databases for ingestion.</p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="workflow-step-card">
+            <div class="step-header">
+              <span class="step-badge">STEP 03</span>
+              <span class="step-icon">🔄</span>
+            </div>
+            <div>
+              <h3 class="step-title">Integrate Data Sources</h3>
+              <p class="step-desc">Design Star Schemas, build Fact &amp; Dimension tables, and unify fragmented tables in SQL Server.</p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="workflow-step-card">
+            <div class="step-header">
+              <span class="step-badge">STEP 04</span>
+              <span class="step-icon">🛡️</span>
+            </div>
+            <div>
+              <h3 class="step-title">Validate Data Quality</h3>
+              <p class="step-desc">Check schema integrity, primary/foreign key constraints, missing values, and anomalies.</p>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="workflow-step-card">
+            <div class="step-header">
+              <span class="step-badge">STEP 05</span>
+              <span class="step-icon">📊</span>
+            </div>
+            <div>
+              <h3 class="step-title">Exploratory Data Analysis</h3>
+              <p class="step-desc">Conduct statistical profiling, correlation heatmaps, distribution curves, and outlier detection.</p>
+            </div>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="workflow-step-card">
+            <div class="step-header">
+              <span class="step-badge">STEP 06</span>
+              <span class="step-icon">🧹</span>
+            </div>
+            <div>
+              <h3 class="step-title">Data Cleaning &amp; Preparation</h3>
+              <p class="step-desc">Clean data in SQL and Python: handle nulls, encode categoricals, standardize formats, and feature-engineer.</p>
+            </div>
+          </div>
+
+          <!-- Step 7 -->
+          <div class="workflow-step-card">
+            <div class="step-header">
+              <span class="step-badge">STEP 07</span>
+              <span class="step-icon">📈</span>
+            </div>
+            <div>
+              <h3 class="step-title">Visualization &amp; Reporting</h3>
+              <p class="step-desc">Build interactive Power BI dashboards, author DAX measures, and structure intuitive user filters.</p>
+            </div>
+          </div>
+
+          <!-- Step 8 -->
+          <div class="workflow-step-card">
+            <div class="step-header">
+              <span class="step-badge">STEP 08</span>
+              <span class="step-icon">💡</span>
+            </div>
+            <div>
+              <h3 class="step-title">Insights &amp; Recommendations</h3>
+              <p class="step-desc">Synthesize analytical findings into concrete, data-backed strategic recommendations for leadership.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. TECHNICAL SKILLS SECTION -->
+    <section id="skills" class="section-wrap">
+      <div class="container">
+        <div class="section-header-block">
+          <div class="section-eyebrow">Technical Capabilities</div>
+          <h2 class="section-main-title">TECHNICAL SKILLS</h2>
+          <p class="section-desc">Practical, hands-on toolsets applied across real analytical pipelines and predictive modeling.</p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- 1. DATA ANALYSIS -->
+          <div class="skill-category-card">
+            <h3 class="skill-cat-title">DATA ANALYSIS</h3>
+            <span class="skill-cat-sub">Exploration &amp; Wrangling</span>
+            <div class="skill-tags">
+              <span class="skill-tag">Microsoft Excel</span>
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Pandas</span>
+              <span class="skill-tag">NumPy</span>
+              <span class="skill-tag">Exploratory Data Analysis</span>
+              <span class="skill-tag">Data Cleaning</span>
+            </div>
+          </div>
+
+          <!-- 2. DATA VISUALIZATION -->
+          <div class="skill-category-card">
+            <h3 class="skill-cat-title">VISUALIZATION</h3>
+            <span class="skill-cat-sub">BI &amp; Storytelling</span>
+            <div class="skill-tags">
+              <span class="skill-tag">Power BI</span>
+              <span class="skill-tag">DAX Measures</span>
+              <span class="skill-tag">Dashboard Development</span>
+              <span class="skill-tag">Data Storytelling</span>
+              <span class="skill-tag">Business Intelligence</span>
+              <span class="skill-tag">Executive KPI Framing</span>
+            </div>
+          </div>
+
+          <!-- 3. MACHINE LEARNING -->
+          <div class="skill-category-card">
+            <h3 class="skill-cat-title">MACHINE LEARNING</h3>
+            <span class="skill-cat-sub">Predictive Modeling</span>
+            <div class="skill-tags">
+              <span class="skill-tag">Scikit-learn</span>
+              <span class="skill-tag">Supervised Learning</span>
+              <span class="skill-tag">Unsupervised Learning</span>
+              <span class="skill-tag">Model Evaluation</span>
+              <span class="skill-tag">Classification</span>
+              <span class="skill-tag">Clustering</span>
+              <span class="skill-tag">Feature Engineering</span>
+            </div>
+          </div>
+
+          <!-- 4. DATABASE & DATA MODELING -->
+          <div class="skill-category-card">
+            <h3 class="skill-cat-title">DATA MODELING</h3>
+            <span class="skill-cat-sub">Relational Architecture</span>
+            <div class="skill-tags">
+              <span class="skill-tag">SQL Server</span>
+              <span class="skill-tag">Database Design</span>
+              <span class="skill-tag">Star Schema</span>
+              <span class="skill-tag">Fact &amp; Dimension Tables</span>
+              <span class="skill-tag">Data Integration</span>
+              <span class="skill-tag">T-SQL Views</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. FEATURED PROJECTS SECTION -->
+    <section id="projects" class="section-wrap">
+      <div class="container">
+        <div class="section-header-block">
+          <div class="section-eyebrow">Portfolio Showcase</div>
+          <h2 class="section-main-title">FEATURED PROJECTS</h2>
+          <p class="section-desc">Real, verified analytics deliverables demonstrating end-to-end data lifecycle mastery.</p>
+        </div>
+
+        <div class="projects-container">
+          
+          <!-- PROJECT 01: FLAGSHIP - BRAIN ROT ANALYTICS -->
+          <div class="flagship-project">
+            <div class="flagship-visual">
+              <img src="assets/brainrot_banner.png" alt="Neuro Digital Analytics Platform Banner" loading="lazy">
+            </div>
+            <div class="flagship-content">
+              <div>
+                <div class="project-header-meta">
+                  <span class="project-number">01</span>
+                  <span class="project-badge">FLAGSHIP BI &amp; ML PROJECT</span>
+                </div>
+                <h3 class="project-title">BRAIN ROT ANALYTICS</h3>
+                <p class="project-desc">
+                  An end-to-end data analytics and AI platform investigating short-form digital content consumption (reels/TikTok) and its quantifiable impact on student attention, focus hours, and wellbeing. Built on 5,000 daily activity records across 99 Egyptian students.
+                </p>
+
+                <div class="project-meta-box">
+                  <div class="meta-row">
+                    <div class="meta-label">Business Problem &amp; Objective</div>
+                    <div class="meta-val">Quantify digital distraction severity, identify risk patterns between study habits and reel consumption, and classify students into 4 distinct behavioral risk stages.</div>
+                  </div>
+                  <div class="meta-row">
+                    <div class="meta-label">End-to-End Workflow</div>
+                    <div class="meta-val">SQL Server Relational Architecture &rarr; Star Schema (Fact_User_Activity &amp; 4 Dimensions) &rarr; Data Cleaning &rarr; 5-Page Power BI Executive Dashboard &rarr; Streamlit ML Prediction App &rarr; Natural-Language AI Chatbot.</div>
+                  </div>
+                </div>
+
+                <div class="project-tech-tags">
+                  <span class="tech-pill">SQL Server</span>
+                  <span class="tech-pill">Power BI</span>
+                  <span class="tech-pill">DAX</span>
+                  <span class="tech-pill">Python</span>
+                  <span class="tech-pill">Scikit-learn</span>
+                  <span class="tech-pill">Streamlit</span>
+                  <span class="tech-pill">Star Schema</span>
+                </div>
+              </div>
+
+              <div class="project-links">
+                <a href="https://github.com/abdelrahman-matouk/Neuro-Digital-Analytics" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                  <span>View On GitHub</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECTS 02 - 03: TWO-COLUMN GRID -->
+          <div class="standard-projects-grid">
+
+            <!-- PROJECT 02: HR ANALYTICS & EMPLOYEE ATTRITION -->
+            <div class="standard-project-card">
+              <div class="card-thumb-wrap">
+                <img src="assets/Home.jpg" alt="HR Analytics Dashboard" loading="lazy">
+              </div>
+              <div class="card-content-wrap">
+                <div>
+                  <div class="project-header-meta">
+                    <span class="project-number">02</span>
+                    <span class="project-badge">PEOPLE ANALYTICS &amp; ML</span>
+                  </div>
+                  <h3 class="standard-project-title">HR ANALYTICS &amp; ATTRITION</h3>
+                  <p class="standard-project-desc">
+                    An analytical investigation into enterprise employee turnover patterns, determining primary attrition triggers across department, compensation, tenure, and overtime metrics.
+                  </p>
+
+                  <div class="project-meta-box">
+                    <div class="meta-row">
+                      <div class="meta-label">Key Analytical Components</div>
+                      <div class="meta-val">Data preprocessing, correlation matrix analysis, attrition risk classification modeling, custom DAX turnover KPIs, and executive retention strategy reports.</div>
+                    </div>
+                  </div>
+
+                  <div class="project-tech-tags">
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">Scikit-learn</span>
+                    <span class="tech-pill">Power BI</span>
+                    <span class="tech-pill">DAX</span>
+                    <span class="tech-pill">Pandas</span>
+                  </div>
+                </div>
+
+                <div class="project-links">
+                  <a href="https://github.com/abdelrahman-matouk/Emp-Attrition-Drivers" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                    <span>View On GitHub</span>
+                    <span>&rarr;</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- PROJECT 03: BANK CUSTOMER CHURN PREDICTION -->
+            <div class="standard-project-card">
+              <div class="card-thumb-wrap">
+                <img src="assets/Customer Churn Prediction.jpg" alt="Bank Customer Churn Prediction" loading="lazy">
+              </div>
+              <div class="card-content-wrap">
+                <div>
+                  <div class="project-header-meta">
+                    <span class="project-number">03</span>
+                    <span class="project-badge">MACHINE LEARNING &amp; CLASSIFICATION</span>
+                  </div>
+                  <h3 class="standard-project-title">BANK CUSTOMER CHURN PREDICTION</h3>
+                  <p class="standard-project-desc">
+                    An end-to-end machine learning classification solution designed to identify at-risk banking customers and prevent attrition through behavioral feature analysis and predictive risk scoring.
+                  </p>
+
+                  <div class="project-meta-box">
+                    <div class="meta-row">
+                      <div class="meta-label">Key Analytical Components</div>
+                      <div class="meta-val">Exploratory data analysis, feature engineering, class imbalance handling (SMOTE), Random Forest classification modeling, and serialized preprocessing pipeline (.pkl) for deployment.</div>
+                    </div>
+                  </div>
+
+                  <div class="project-tech-tags">
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">Scikit-learn</span>
+                    <span class="tech-pill">Random Forest</span>
+                    <span class="tech-pill">SMOTE</span>
+                    <span class="tech-pill">Pandas</span>
+                  </div>
+                </div>
+
+                <div class="project-links">
+                  <a href="https://github.com/abdelrahman-matouk/Bank-Customer-Churn-Prediction" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                    <span>View On GitHub</span>
+                    <span>&rarr;</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. EDUCATION & CERTIFICATIONS SECTION -->
+    <section id="education" class="section-wrap">
+      <div class="container">
+        <div class="section-header-block">
+          <div class="section-eyebrow">Credentials &amp; Growth</div>
+          <h2 class="section-main-title">EDUCATION &amp; CERTIFICATIONS</h2>
+          <p class="section-desc">Academic foundation in Information Systems paired with government and institute specialized training.</p>
+        </div>
+
+        <div class="edu-cert-grid">
+          <!-- Timeline -->
+          <div class="timeline-col">
+            <!-- Item 1: Minya University -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-period">2024 &ndash; 2028 (EXPECTED GRADUATION)</div>
+              <h3 class="timeline-title">B.Sc. in Information Systems</h3>
+              <div class="timeline-org">Faculty of Computers and Information &bull; Minya University</div>
+              <p class="timeline-note">Third-Year Student. Specializing in enterprise databases, system architecture, data modeling, algorithms, and applied machine learning principles.</p>
+            </div>
+
+            <!-- Item 2: DEPI -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-period">DEPI ROUND 4 &bull; 2024</div>
+              <h3 class="timeline-title">Data Analyst Specialist Track</h3>
+              <div class="timeline-org">Digital Egypt Pioneers Initiative (DEPI) &bull; Ministry of Communications &amp; Next Academy</div>
+              <p class="timeline-note">Intensive technical specialization covering advanced SQL database architecture, business intelligence with Power BI &amp; DAX, and end-to-end graduation project defense.</p>
+            </div>
+
+            <!-- Item 3: NTI -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-period">SPECIALIZED COURSE</div>
+              <h3 class="timeline-title">Machine Learning for Data Analysis</h3>
+              <div class="timeline-org">National Telecommunication Institute (NTI)</div>
+              <p class="timeline-note">Practical predictive modeling using Python, exploratory statistical analysis, scikit-learn pipelines, model evaluation, and feature engineering.</p>
+            </div>
+
+            <!-- Item 4: Additional Programs -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-period">PROFESSIONAL WORKSHOPS</div>
+              <h3 class="timeline-title">Google Developer Groups &amp; Business English</h3>
+              <div class="timeline-org">GDG Build with AI &bull; SYE Business English Program</div>
+              <p class="timeline-note">Workshops in generative AI integrations and professional international business communication.</p>
+            </div>
+          </div>
+
+          <!-- 4-Certificate Gallery Feature -->
+          <div class="cert-gallery-wrap">
+            <div class="cert-gallery-header">
+              <h3 class="cert-gallery-title">
+                <span>Verified Credentials</span>
+              </h3>
+              <span class="cert-gallery-hint">Click image to enlarge</span>
+            </div>
+
+            <div class="cert-gallery-grid">
+              <!-- Certificate 1: DEPI Data Analyst Specialist -->
+              <div class="cert-card" data-full="assets/depi_cert.jpeg" data-caption="DEPI Round 4 — Data Analyst Specialist Track (Ministry of Communications and Information Technology of Egypt)">
+                <div class="cert-thumb-container">
+                  <img src="assets/depi_cert.jpeg" alt="DEPI Data Analyst Specialist Certificate" loading="lazy">
+                  <div class="cert-zoom-overlay">
+                    <span>&oplus; Enlarge</span>
+                  </div>
+                </div>
+                <div class="cert-details">
+                  <div>
+                    <span class="cert-tag">Government Accreditation</span>
+                    <h4 class="cert-name">Data Analyst Specialist</h4>
+                    <p class="cert-issuer">Digital Egypt Pioneers Initiative (DEPI) &bull; MCIT Egypt</p>
+                  </div>
+                  <div class="cert-date">&bull; Round 4 Track Specialization</div>
+                </div>
+              </div>
+
+              <!-- Certificate 2: GDG Minia Certificate of Appreciation -->
+              <div class="cert-card" data-full="assets/cert_gdg.png" data-caption="GDG Minia — Certificate of Appreciation: Technical Member (Google Developer Groups, Season 2025-2026)">
+                <div class="cert-thumb-container">
+                  <img src="assets/cert_gdg.png" alt="GDG Minia Certificate of Appreciation" loading="lazy">
+                  <div class="cert-zoom-overlay">
+                    <span>&oplus; Enlarge</span>
+                  </div>
+                </div>
+                <div class="cert-details">
+                  <div>
+                    <span class="cert-tag">Developer Community</span>
+                    <h4 class="cert-name">Certificate of Appreciation</h4>
+                    <p class="cert-issuer">GDG Minia &bull; Google Developer Groups</p>
+                  </div>
+                  <div class="cert-date">&bull; Technical Member &bull; Season 2025-2026</div>
+                </div>
+              </div>
+
+              <!-- Certificate 3: SYE Business English Track -->
+              <div class="cert-card" data-full="assets/cert_sye_english.png" data-caption="Business English Track Certificate of Completion (Round 4) — DEPI & SYE English Community (Nov 2025 - Jul 2026)">
+                <div class="cert-thumb-container">
+                  <img src="assets/cert_sye_english.png" alt="Business English Certificate DEPI SYE" loading="lazy">
+                  <div class="cert-zoom-overlay">
+                    <span>&oplus; Enlarge</span>
+                  </div>
+                </div>
+                <div class="cert-details">
+                  <div>
+                    <span class="cert-tag">Professional Track</span>
+                    <h4 class="cert-name">Business English Track</h4>
+                    <p class="cert-issuer">DEPI &bull; SYE English Community (MCIT Egypt)</p>
+                  </div>
+                  <div class="cert-date">&bull; Round 4 &bull; Nov 2025 &ndash; Jul 2026</div>
+                </div>
+              </div>
+
+              <!-- Certificate 4: Build with AI Masr Edition -->
+              <div class="cert-card" data-full="assets/cert_build_with_ai.png" data-caption="Build with AI: Masr Edition — Certificate of Attendance (Google for Developers & Information Technology Institute)">
+                <div class="cert-thumb-container">
+                  <img src="assets/cert_build_with_ai.png" alt="Build with AI Masr Edition Certificate" loading="lazy">
+                  <div class="cert-zoom-overlay">
+                    <span>&oplus; Enlarge</span>
+                  </div>
+                </div>
+                <div class="cert-details">
+                  <div>
+                    <span class="cert-tag">Artificial Intelligence</span>
+                    <h4 class="cert-name">Build with AI: Masr Edition</h4>
+                    <p class="cert-issuer">Google for Developers &bull; Information Technology Institute (iti)</p>
+                  </div>
+                  <div class="cert-date">&bull; Certificate of Attendance</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. CONTACT SECTION -->
+    <footer id="contact" class="contact-section-wrap">
+      <div class="container">
+        <div class="contact-layout">
+          <div>
+            <div class="section-eyebrow">Get In Touch</div>
+            <h2 class="contact-headline">LET'S TURN DATA INTO <span>DECISIONS.</span></h2>
+            <p class="contact-subtext">
+              Have a project, an opportunity, or an interesting analytical problem to solve? I am open for collaborations, internships, and data-driven initiatives.
+            </p>
+            <a href="mailto:engabood999@gmail.com" class="btn-primary" style="display: inline-flex; width: fit-content;">
+              <span>Send An Email</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+
+          <div class="contact-items-list">
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com/in/abdelrahman-ayman-matouk-40ba94352" target="_blank" rel="noopener noreferrer" class="contact-link-card">
+              <div class="contact-card-icon">
+                <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.45 1.45 0 0 0 1.45-1.45 1.45 1.45 0 0 0-1.45-1.45 1.45 1.45 0 0 0-1.45 1.45c0 .8.65 1.45 1.45 1.45m1.39 9.74v-8.37H5.07v8.37h2.78z"/></svg>
+              </div>
+              <div class="contact-card-info">
+                <h5>Professional Network</h5>
+                <p>linkedin.com/in/abdelrahman-ayman-matouk-40ba94352</p>
+              </div>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/abdelrahman-matouk" target="_blank" rel="noopener noreferrer" class="contact-link-card">
+              <div class="contact-card-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+              </div>
+              <div class="contact-card-info">
+                <h5>Code Repositories</h5>
+                <p>github.com/abdelrahman-matouk</p>
+              </div>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:engabood999@gmail.com" class="contact-link-card">
+              <div class="contact-card-icon">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              </div>
+              <div class="contact-card-info">
+                <h5>Direct Email</h5>
+                <p>engabood999@gmail.com</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Footer Bar -->
+        <div class="site-footer">
+          <div class="footer-left">
+            <span>&copy; 2026 Abdelrahman Matouk.</span>
+            <span>&bull;</span>
+            <span>Faculty of Computers and Information, Minya University.</span>
+          </div>
+          <div class="footer-right">
+            <span>Data Analyst | Aspiring Machine Learning Engineer</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ==========================================================================
+       CERTIFICATE LIGHTBOX MODAL
+       ========================================================================== -->
+  <div id="cert-lightbox" class="cert-lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-dialog">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close Preview">&times;</button>
+      <img id="lightbox-img" src="" alt="Certificate Preview">
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       JAVASCRIPT: CONTINUOUS FULL-PAGE SCROLL-DRIVEN ANIMATION ARCHITECTURE
+       ========================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      // -------------------------------------------------------------
+      // 1. FULL-PAGE SCROLL-DRIVEN 240-FRAME CONTINUOUS ANIMATION
+      // -------------------------------------------------------------
+      const TOTAL_FRAMES = 240;
+      const canvas = document.getElementById('global-canvas');
+      const ctx = canvas.getContext('2d', { alpha: false });
+
+      const images = new Array(TOTAL_FRAMES);
+      let loadedCount = 0;
+      let firstFrameRendered = false;
+      let lastDrawnFrame = -1;
+
+      // Helper to format frame filename: frames/ezgif-frame-001.jpg ... frames/ezgif-frame-240.jpg
+      function getFrameSrc(index) {
+        const padded = String(index + 1).padStart(3, '0');
+        return `frames/ezgif-frame-${padded}.jpg`;
+      }
+
+      // Preload all 240 frames efficiently
+      for (let i = 0; i < TOTAL_FRAMES; i++) {
+        const img = new Image();
+        img.src = getFrameSrc(i);
+        img.onload = () => {
+          images[i] = img;
+          loadedCount++;
+          if (i === 0 && !firstFrameRendered) {
+            firstFrameRendered = true;
+            resizeCanvas();
+            renderFrame(0);
+          }
+        };
+        images[i] = img;
+      }
+
+      // High-DPI Canvas Sizing
+      function resizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+
+        canvas.width = Math.round(w * dpr);
+        canvas.height = Math.round(h * dpr);
+        canvas.style.width = w + 'px';
+        canvas.style.height = h + 'px';
+
+        lastDrawnFrame = -1;
+        renderFrame(Math.round(currentProgress * (TOTAL_FRAMES - 1)));
+      }
+
+      window.addEventListener('resize', () => {
+        resizeCanvas();
+        targetProgress = getFullPageScrollProgress();
+      }, { passive: true });
+
+      // Draw Frame preserving 16:9 aspect ratio (cover mode)
+      function renderFrame(index) {
+        const target = Math.max(0, Math.min(TOTAL_FRAMES - 1, index));
+        let img = images[target];
+
+        // Graceful fallback to nearest loaded frame to eliminate any flicker
+        let isFallback = false;
+        if (!img || !img.complete || img.naturalWidth === 0) {
+          for (let offset = 1; offset < TOTAL_FRAMES; offset++) {
+            const prev = target - offset;
+            if (prev >= 0 && images[prev] && images[prev].complete && images[prev].naturalWidth > 0) {
+              img = images[prev];
+              isFallback = true;
+              break;
+            }
+            const next = target + offset;
+            if (next < TOTAL_FRAMES && images[next] && images[next].complete && images[next].naturalWidth > 0) {
+              img = images[next];
+              isFallback = true;
+              break;
+            }
+          }
+        }
+
+        if (!img || !img.complete || img.naturalWidth === 0) return;
+
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+
+        const cw = canvas.width;
+        const ch = canvas.height;
+        const iw = img.naturalWidth;
+        const ih = img.naturalHeight;
+
+        // Cover the canvas while strictly preserving aspect ratio
+        const hRatio = cw / iw;
+        const vRatio = ch / ih;
+        const ratio = Math.max(hRatio, vRatio);
+
+        const dw = iw * ratio;
+        const dh = ih * ratio;
+        const ox = (cw - dw) / 2;
+        const oy = (ch - dh) / 2;
+
+        ctx.drawImage(img, ox, oy, dw, dh);
+        lastDrawnFrame = isFallback ? -1 : target;
+      }
+
+      // Continuous Full-Page Scroll Progress Calculation:
+      // Map entire document scroll (0% at top to 100% at footer bottom) to 240 frames
+      let currentProgress = 0;
+      let targetProgress = 0;
+
+      function getFullPageScrollProgress() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        const scrollHeight = Math.max(
+          document.body.scrollHeight,
+          document.documentElement.scrollHeight,
+          document.body.offsetHeight,
+          document.documentElement.offsetHeight,
+          document.body.clientHeight,
+          document.documentElement.clientHeight
+        );
+        const maxScroll = scrollHeight - window.innerHeight;
+        if (maxScroll <= 0) return 0;
+        return Math.max(0, Math.min(1, scrollTop / maxScroll));
+      }
+
+      // Continuous requestAnimationFrame rendering loop with silky LERP damping
+      function animationLoop() {
+        targetProgress = getFullPageScrollProgress();
+
+        // Buttery smooth momentum lerp
+        const diff = targetProgress - currentProgress;
+        if (Math.abs(diff) > 0.0001) {
+          currentProgress += diff * 0.12;
+        } else {
+          currentProgress = targetProgress;
+        }
+
+        const targetFrame = Math.round(currentProgress * (TOTAL_FRAMES - 1));
+        if (targetFrame !== lastDrawnFrame) {
+          renderFrame(targetFrame);
+        }
+
+        requestAnimationFrame(animationLoop);
+      }
+
+      // Initialize
+      resizeCanvas();
+      animationLoop();
+
+      // -------------------------------------------------------------
+      // 2. NAVBAR SCROLL EFFECT & ACTIVE SECTION HIGHLIGHTING
+      // -------------------------------------------------------------
+      const nav = document.getElementById('main-nav');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sections = document.querySelectorAll('section[id], footer[id]');
+      const menuToggle = document.getElementById('menu-toggle');
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+
+        // Active section tracking
+        let currentSectionId = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 140;
+          const sectionHeight = section.offsetHeight;
+          if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            currentSectionId = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + currentSectionId) {
+            link.classList.add('active');
+          }
+        });
+      }, { passive: true });
+
+      // Mobile Menu Toggle
+      menuToggle.addEventListener('click', () => {
+        nav.classList.toggle('open');
+      });
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('open');
+        });
+      });
+
+      // -------------------------------------------------------------
+      // 3. CERTIFICATE LIGHTBOX MODAL HANDLER
+      // -------------------------------------------------------------
+      const certLightbox = document.getElementById('cert-lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      const lightboxCloseBtn = document.getElementById('lightbox-close');
+      const lightboxBackdrop = document.querySelector('.lightbox-backdrop');
+      const certCards = document.querySelectorAll('.cert-card');
+
+      certCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const fullSrc = card.getAttribute('data-full');
+          const caption = card.getAttribute('data-caption');
+          if (fullSrc) {
+            lightboxImg.src = fullSrc;
+            lightboxCaption.textContent = caption || '';
+            certLightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      });
+
+      function closeCertLightbox() {
+        if (certLightbox && certLightbox.classList.contains('active')) {
+          certLightbox.classList.remove('active');
+          lightboxImg.src = '';
+          document.body.style.overflow = '';
+        }
+      }
+
+      if (lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', closeCertLightbox);
+      if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeCertLightbox);
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeCertLightbox();
+      });
+
+    })();
+  </script>
+</body>
+</html>
